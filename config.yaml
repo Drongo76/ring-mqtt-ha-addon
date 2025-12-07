@@ -10,38 +10,38 @@ arch:
   - armhf
   - armv7
 
-# dein Fork vom Add-on (optional, aber sauber)
-url: 'https://github.com/Drongo76/ring-mqtt-ha-addon'
+# dein Fork vom Add-on Repo
+url: "https://github.com/Drongo76/ring-mqtt-ha-addon"
 
-# WICHTIG: dein eigenes Image aus GitHub Container Registry
-image: 'drongo76/ring-mqtt'
+# dein eigenes Image aus GHCR (nicht DockerHub!)
+image: "ghcr.io/drongo76/ring-mqtt"
 
-webui: 'http://[HOST]:[PORT:55123]/'
+webui: "http://[HOST]:[PORT:55123]/"
 ingress: true
 ingress_port: 55123
 
 services:
-  - 'mqtt:need'
+  - "mqtt:need"
 
 map:
   - ssl
 
-watchdog: 'http://[HOST]:[PORT:55123]/'
+watchdog: "http://[HOST]:[PORT:55123]/"
 
 ports:
   8554/tcp: null
 ports_description:
-  8554/tcp: 'RTSP Server External Port (IMPORTANT: Only needed to allow RTSP clients outside of Home Assistant, configure livestream username/password before enabling!)'
+  8554/tcp: "RTSP Server External Port (IMPORTANT: Only needed to allow RTSP clients outside of Home Assistant, configure livestream username/password before enabling!)"
 
 init: false
 video: true
 
 options:
-  mqtt_url: 'mqtt://auto_username:auto_password@auto_hostname'
-  mqtt_options: ''
-  livestream_user: ''
-  livestream_pass: ''
-  disarm_code: ''
+  mqtt_url: "mqtt://auto_username:auto_password@auto_hostname"
+  mqtt_options: ""
+  livestream_user: ""
+  livestream_pass: ""
+  disarm_code: ""
   enable_cameras: true
   enable_modes: false
   enable_panic: false
