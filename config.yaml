@@ -1,48 +1,64 @@
-name: Ring MQTT (Custom Fork)
+name: Ring-MQTT with Video Streaming
 version: custom
-slug: ring-mqtt
-description: Ring MQTT Add-on with RTSP support (custom fork)
-url: https://github.com/drongo76/ring-mqtt
+slug: ring_mqtt
+description: Integrate Ring Devices into Home Assistant via MQTT and RTSP
+startup: application
+boot: auto
 arch:
   - aarch64
   - amd64
+  - armhf
   - armv7
-  - i386
-init: false
-startup: application
-boot: auto
-host_network: false
-homeassistant_api: true
-hassio_api: true
-ingress: false
-panel_icon: mdi:cctv
+
+# dein Fork vom Add-on Repo (UI-Link)
+url: "https://github.com/Drongo76/ring-mqtt-ha-addon"
+
+# dein eigenes Image aus GHCR (Tag kommt aus version:)
+image: "ghcr.io/drongo76/ring-mqtt"
+
+webui: "http://[HOST]:[PORT:55123]/"
+ingress: true
+ingress_port: 55123
+
+services:
+  - "mqtt:need"
+
 map:
-  - config:rw
-  - ssl:rw
-  - share:rw
-  - media:rw
+  - ssl
+
+watchdog: "http://[HOST]:[PORT:55123]/"
+
+ports:
+  8554/tcp: null
+ports_description:
+  8554/tcp: "RTSP Server External Port (IMPORTANT: Only needed to allow RTSP clients outside of Home Assistant, configure livestream username/password before enabling!)"
+
+init: false
+video: true
+
 options:
-  verbose: false
-  mqtt_url: mqtt://core-mosquitto
-  mqtt_user: ""
-  mqtt_pass: ""
-  ring_token: ""
-  ring_refresh_token: ""
-  ring_email: ""
-  ring_password: ""
-  enable_rtsp: true
-  rtsp_port: 8554
-  enable_web_ui: true
+  mqtt_url: "mqtt://auto_username:auto_password@auto_hostname"
+  mqtt_options: ""
+  livestream_user: ""
+  livestream_pass: ""
+  disarm_code: ""
+  enable_cameras: true
+  enable_modes: false
+  enable_panic: false
+  branch: addon
+  debug: ring-*
+  location_ids: []
+
 schema:
-  verbose: bool
-  mqtt_url: str
-  mqtt_user: str?
-  mqtt_pass: password?
-  ring_token: str?
-  ring_refresh_token: str?
-  ring_email: str?
-  ring_password: password?
-  enable_rtsp: bool
-  rtsp_port: int
-  enable_web_ui: bool
-image: "ghcr.io/drongo76/ring-mqtt:custom"
+  mqtt_url: url
+  mqtt_options: str
+  livestream_user: str
+  livestream_pass: password
+  disarm_code: password
+  enable_cameras: bool
+  enable_modes: bool
+  enable_panic: bool
+  branch: str
+  debug: str
+  location_ids:
+    - str
