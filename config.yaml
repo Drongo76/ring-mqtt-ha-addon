@@ -9,22 +9,33 @@ arch:
   - amd64
   - armhf
   - armv7
-url: 'https://github.com/tsightler/ring-mqtt-ha-addon'
-image: 'tsightler/ring-mqtt'
+
+# dein Fork vom Add-on (optional, aber sauber)
+url: 'https://github.com/Drongo76/ring-mqtt-ha-addon'
+
+# WICHTIG: dein eigenes Image aus GitHub Container Registry
+image: 'ghcr.io/drongo76/ring-mqtt'
+
 webui: 'http://[HOST]:[PORT:55123]/'
 ingress: true
 ingress_port: 55123
+
 services:
   - 'mqtt:need'
+
 map:
   - ssl
+
 watchdog: 'http://[HOST]:[PORT:55123]/'
+
 ports:
   8554/tcp: null
 ports_description:
   8554/tcp: 'RTSP Server External Port (IMPORTANT: Only needed to allow RTSP clients outside of Home Assistant, configure livestream username/password before enabling!)'
+
 init: false
 video: true
+
 options:
   mqtt_url: 'mqtt://auto_username:auto_password@auto_hostname'
   mqtt_options: ''
@@ -37,6 +48,7 @@ options:
   branch: addon
   debug: ring-*
   location_ids: []
+
 schema:
   mqtt_url: url
   mqtt_options: str
