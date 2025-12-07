@@ -14,7 +14,7 @@ arch:
 url: 'https://github.com/Drongo76/ring-mqtt-ha-addon'
 
 # WICHTIG: dein eigenes Image aus GitHub Container Registry
-image: 'ghcr.io/drongo76/ring-mqtt'
+image: 'drongo76/ring-mqtt'
 
 webui: 'http://[HOST]:[PORT:55123]/'
 ingress: true
