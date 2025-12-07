@@ -14,7 +14,7 @@ arch:
 url: "https://github.com/Drongo76/ring-mqtt-ha-addon"
 
 # dein eigenes Image aus GHCR (nicht DockerHub!)
-image: "ghcr.io/drongo76/ring-mqtt"
+image: "ghcr.io/drongo76/ring-mqtt:custom"
 
 webui: "http://[HOST]:[PORT:55123]/"
 ingress: true
