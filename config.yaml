@@ -9,8 +9,8 @@ arch:
   - amd64
   - armhf
   - armv7
-url: 'https://github.com/tsightler/ring-mqtt-ha-addon'
-image: 'tsightler/ring-mqtt'
+url: 'https://github.com/Drongo76/ring-mqtt-ha-addon.git'
+image: 'ghcr.io/drongo76/ring-mqtt'
 webui: 'http://[HOST]:[PORT:55123]/'
 ingress: true
 ingress_port: 55123
