@@ -26,7 +26,7 @@ options:
   mqtt_url: 'mqtt://auto_username:auto_password@auto_hostname'
   mqtt_options: ''
   livestream_user: ''
-  livestream_pass: password
+  livestream_pass: ''
   disarm_code: ''
   enable_cameras: true
   enable_modes: false
