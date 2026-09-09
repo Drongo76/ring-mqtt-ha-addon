@@ -1,5 +1,5 @@
 name: Ring-MQTT with Video Streaming
-version: build-24
+version: build-25
 slug: ring_mqtt
 description: Integrate Ring Devices into Home Assistant via MQTT and RTSP
 startup: application
@@ -26,7 +26,7 @@ options:
   mqtt_url: 'mqtt://auto_username:auto_password@auto_hostname'
   mqtt_options: ''
   livestream_user: ''
-  livestream_pass: ''
+  livestream_pass: password
   disarm_code: ''
   enable_cameras: true
   enable_modes: false
