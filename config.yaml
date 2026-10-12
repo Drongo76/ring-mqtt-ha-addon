@@ -1,5 +1,5 @@
 name: Ring-MQTT with Video Streaming
-version: build-43
+version: build-44
 slug: ring_mqtt
 description: Integrate Ring Devices into Home Assistant via MQTT and RTSP
 startup: application
